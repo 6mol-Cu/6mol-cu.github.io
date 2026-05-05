@@ -102,59 +102,86 @@
                     <div class="border rounded p-4 mb-0">
                         <h2>格式审计模块</h2>
                         
-                        <!-- 论文文档上传区域 -->
-                        <div class="border border-dashed p-5 text-center mb-4">
-                            <p>请上传论文文档</p>
-                            <input type="file" id="paper-upload" accept=".doc,.docx">
-                        </div>
-                        
-                        <!-- 学校选择 -->
+                        <!-- 输入区 -->
                         <div class="mb-4">
-                            <label for="university-select">你来自：</label>
-                            <select id="university-select" class="form-control">
-                                <option value="">请选择学校</option>
-                                <option value="北京大学">北京大学</option>
-                                <option value="清华大学">清华大学</option>
-                                <option value="中国人民大学">中国人民大学</option>
-                                <option value="北京师范大学">北京师范大学</option>
-                                <option value="北京理工大学">北京理工大学</option>
-                                <option value="北京航空航天大学">北京航空航天大学</option>
-                                <option value="北京科技大学">北京科技大学</option>
-                                <option value="北京交通大学">北京交通大学</option>
-                                <option value="北京邮电大学">北京邮电大学</option>
-                                <option value="北京化工大学">北京化工大学</option>
-                                <option value="中国农业大学">中国农业大学</option>
-                                <option value="北京林业大学">北京林业大学</option>
-                                <option value="北京中医药大学">北京中医药大学</option>
-                                <option value="中国政法大学">中国政法大学</option>
-                                <option value="华北电力大学">华北电力大学</option>
-                                <option value="北京工业大学">北京工业大学</option>
-                            </select>
-                        </div>
-                        
-                        <!-- 是否有额外论文规范 -->
-                        <div class="mb-4">
-                            <label class="form-check-label" for="extra规范-toggle">是否有额外的论文规范</label>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="extra规范-toggle">
+                            <!-- 学校名称 -->
+                            <div class="mb-4">
+                                <label for="school_name">学校名称：</label>
+                                <select id="school_name" class="form-control">
+                                    <option value="">请选择学校</option>
+                                    <option value="北京大学">北京大学</option>
+                                    <option value="清华大学">清华大学</option>
+                                    <option value="中国人民大学">中国人民大学</option>
+                                    <option value="北京师范大学">北京师范大学</option>
+                                    <option value="北京理工大学">北京理工大学</option>
+                                    <option value="北京航空航天大学">北京航空航天大学</option>
+                                    <option value="北京科技大学">北京科技大学</option>
+                                    <option value="北京交通大学">北京交通大学</option>
+                                    <option value="北京邮电大学">北京邮电大学</option>
+                                    <option value="北京化工大学">北京化工大学</option>
+                                    <option value="中国农业大学">中国农业大学</option>
+                                    <option value="北京林业大学">北京林业大学</option>
+                                    <option value="北京中医药大学">北京中医药大学</option>
+                                    <option value="中国政法大学">中国政法大学</option>
+                                    <option value="华北电力大学">华北电力大学</option>
+                                    <option value="北京工业大学">北京工业大学</option>
+                                </select>
                             </div>
+
+                            <!-- 处理模式 -->
+                            <div class="mb-4">
+                                <label for="process_mode">处理模式：</label>
+                                <select id="process_mode" class="form-control">
+                                    <option value="">请选择处理模式</option>
+                                    <option value="论文排版">1. 论文排版</option>
+                                    <option value="直接生成">2. 直接生成（不录入学校）</option>
+                                    <option value="特定学校">3. 特定学校</option>
+                                </select>
+                            </div>
+
+                            <!-- 论文类型 -->
+                            <div class="mb-4">
+                                <label for="paper_type">论文类型：</label>
+                                <input type="text" id="paper_type" class="form-control" placeholder="如：硕士论文、博士论文等">
+                            </div>
+
+                            <!-- 修改方向 -->
+                            <div class="mb-4">
+                                <label for="rewrite_mode">修改方向：</label>
+                                <select id="rewrite_mode" class="form-control">
+                                    <option value="">请选择修改方向</option>
+                                    <option value="轻度优化">轻度优化（保留原文）</option>
+                                    <option value="深度优化">深度优化（允许补充）</option>
+                                </select>
+                            </div>
+
+                            <!-- 正文内容 -->
+                            <div class="mb-4">
+                                <label for="paper_content">正文内容：</label>
+                                <textarea id="paper_content" class="form-control" rows="5" placeholder="请输入论文正文内容"></textarea>
+                            </div>
+
+                            <!-- 上传论文文件 -->
+                            <div class="mb-4">
+                                <label for="paper_file">上传论文文件：</label>
+                                <input type="file" id="paper_file" class="form-control" accept=".txt,.doc,.docx,.pdf">
+                            </div>
+
+                            <!-- 补充要求 -->
+                            <div class="mb-4">
+                                <label for="extra_requirements">补充要求：</label>
+                                <textarea id="extra_requirements" class="form-control" rows="3" placeholder="请输入额外的要求或说明"></textarea>
+                            </div>
+
+                            <!-- 开始分析按钮 -->
+                            <button id="start-analysis-btn" class="btn btn-primary">开始分析</button>
                         </div>
                         
-                        <!-- 额外论文规范上传区域（默认隐藏） -->
-                        <div id="extra规范-upload-area" class="border border-dashed p-5 text-center mb-4" style="display: none;">
-                            <p>请上传论文规范</p>
-                            <input type="file" id="extra规范-upload" accept=".doc,.docx,.pdf">
-                        </div>
-                        
-                        <!-- 提交按钮 -->
-                        <button id="submit-btn" class="btn btn-primary mb-4">提交</button>
-                        
-                        <!-- 结果生成区域 -->
+                        <!-- 展示区 -->
                         <div class="border rounded p-4 mb-0">
-                            <h3 id="result-title">待生成</h3>
-                            <div id="result-content" style="display: none;">
-                                <span id="generated-title"></span>
-                                <a href="preview.html" id="preview-link" class="text-primary">预览</a>
+                            <h3>分析结果</h3>
+                            <div id="result-container" class="mt-2">
+                                <p>等待分析...</p>
                             </div>
                         </div>
                     </div>
@@ -194,96 +221,90 @@
     </footer>
 
     <script>
-        // 额外论文规范上传区域的显示/隐藏
-        const extra规范Toggle = document.getElementById('extra规范-toggle');
-        const extra规范UploadArea = document.getElementById('extra规范-upload-area');
-        
-        if (extra规范Toggle && extra规范UploadArea) {
-            extra规范Toggle.addEventListener('change', function() {
-                if (this.checked) {
-                    extra规范UploadArea.style.display = 'block';
-                } else {
-                    extra规范UploadArea.style.display = 'none';
-                }
-            });
-        }
-        
-        // 提交按钮点击事件
-        const submitBtn = document.getElementById('submit-btn');
-        if (submitBtn) {
-            submitBtn.addEventListener('click', function() {
-                // 这里需要添加API调用代码
-                // 1. 获取表单数据
-                const paperFile = document.getElementById('paper-upload').files[0];
-                const university = document.getElementById('university-select').value;
-                const hasExtra规范 = document.getElementById('extra规范-toggle').checked;
-                const extra规范File = hasExtra规范 ? document.getElementById('extra规范-upload').files[0] : null;
-                
-                // 2. 验证表单
-                if (!paperFile) {
-                    alert('请上传论文文档');
+        // 等待DOM加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取按钮和结果容器
+            const startBtn = document.getElementById('start-analysis-btn');
+            const resultContainer = document.getElementById('result-container');
+
+            // 添加点击事件监听
+            startBtn.addEventListener('click', async function() {
+                // 获取表单数据
+                const school_name = document.getElementById('school_name').value;
+                const process_mode = document.getElementById('process_mode').value;
+                const paper_type = document.getElementById('paper_type').value;
+                const rewrite_mode = document.getElementById('rewrite_mode').value;
+                const paper_content = document.getElementById('paper_content').value;
+                const extra_requirements = document.getElementById('extra_requirements').value;
+
+                // 验证必填字段
+                if (!process_mode) {
+                    alert('请选择处理模式');
                     return;
                 }
-                if (!university) {
+
+                // 如果处理模式是"特定学校"，则必须选择学校
+                if (process_mode === '特定学校' && !school_name) {
                     alert('请选择学校');
                     return;
                 }
-                
-                // 3. 调用API
-                // 注意：这里需要填写你的API密钥和工作流ID
-                const API_KEY = 'YOUR_API_KEY_HERE'; // 替换为你的API密钥
-                const WORKFLOW_ID = 'YOUR_WORKFLOW_ID_HERE'; // 替换为你的工作流ID
-                const API_URL = `https://api.dify.ai/v1/workflows/${WORKFLOW_ID}/run`;
-                
-                // 构建请求数据
-                const formData = new FormData();
-                formData.append('paper', paperFile);
-                formData.append('university', university);
-                formData.append('has_extra规范', hasExtra规范);
-                if (hasExtra规范 && extra规范File) {
-                    formData.append('extra规范', extra规范File);
-                }
-                
-                // 发送请求
-                fetch(API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${API_KEY}`
-                    },
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // 处理响应
+
+                // 更新结果容器显示加载状态
+                resultContainer.innerHTML = '<p>正在分析中...</p>';
+
+                try {
+                    // 发送请求到API端点
+                    const response = await fetch('/api/run-workflow', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            inputs: {
+                                school_name: school_name || null,
+                                process_mode: process_mode,
+                                paper_type: paper_type || null,
+                                rewrite_mode: rewrite_mode || null,
+                                paper_content: paper_content || null,
+                                extra_requirements: extra_requirements || null
+                            },
+                            user: 'frontend-user'
+                        })
+                    });
+
+                    // 检查 HTTP 状态码
+                    if (!response.ok) {
+                        resultContainer.innerHTML = '<p>请求失败，HTTP状态码: ' + response.status + '</p>';
+                        return;
+                    }
+
+                    // 解析响应
+                    const data = await response.json();
                     console.log('API响应:', data);
-                    
-                    // 更新结果区域
-                    const resultTitle = document.getElementById('result-title');
-                    const resultContent = document.getElementById('result-content');
-                    const generatedTitle = document.getElementById('generated-title');
-                    
-                    if (data.success) {
-                        resultTitle.style.display = 'none';
-                        resultContent.style.display = 'block';
-                        generatedTitle.textContent = data.data.generated_title || '生成的论文标题';
+
+                    // 显示结果
+                    if (data.success === true) {
+                        resultContainer.innerHTML = '<p>' + (data.data || '分析完成') + '</p>';
                         
                         // 更新文献溯源模块
                         const citationResult = document.getElementById('citation-result');
-                        citationResult.innerHTML = data.data.citation_analysis || '<p>文献分析结果将显示在这里</p>';
+                        citationResult.innerHTML = data.data?.citation_analysis || data.data?.output || '<p>文献分析结果将显示在这里</p>';
                         
                         // 更新逻辑审计模块
                         const logicResult = document.getElementById('logic-result');
-                        logicResult.innerHTML = data.data.logic_analysis || '<p>逻辑分析结果将显示在这里</p>';
+                        logicResult.innerHTML = data.data?.logic_analysis || data.data?.output || '<p>逻辑分析结果将显示在这里</p>';
                     } else {
-                        alert('请求失败: ' + data.message);
+                        // 显示详细的错误信息
+                        const errorMsg = data.message || data.error || '未知错误';
+                        resultContainer.innerHTML = '<p>分析失败: ' + errorMsg + '</p>';
                     }
-                })
-                .catch(error => {
-                    console.error('错误:', error);
-                    alert('请求失败，请检查网络连接');
-                });
+                } catch (error) {
+                    // 处理错误
+                    console.error('请求失败:', error);
+                    resultContainer.innerHTML = '<p>请求失败: ' + error.message + '</p>';
+                }
             });
-        }
+        });
     </script>
 
 </body>
